@@ -232,8 +232,13 @@ void process(const vector<string> &args, MyWindow *w)
 
     //output attachment
     std::ofstream astrm("attachment.out");
+	
+	//iterate vert, i cur vert index
     for(i = 0; i < (int)m.vertices.size(); ++i) {
+
         Vector<double, -1> v = o.attachment->getWeights(i);
+			
+		// iterate 並四捨五入 v[j] 到小數點後五位 ,輸出
         for(int j = 0; j < v.size(); ++j) {
             double d = floor(0.5 + v[j] * 10000.) / 10000.;
             astrm << d << " ";

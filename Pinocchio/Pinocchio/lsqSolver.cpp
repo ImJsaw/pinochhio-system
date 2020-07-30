@@ -165,13 +165,16 @@ vector<int> SPDMatrix::computePerm() const
     }
     for(i = 0; i < sz; ++i)
         neighborSize.insert(make_pair(neighbors[i].size(), i));
-
+	Debugging::out() << "Perm init " << endl;
     //iterate
     while(!neighborSize.empty()) {
         //remove the neighbor of minimum degree
         int cur = (neighborSize.begin())->second;
         neighborSize.erase(neighborSize.begin());
 
+		if (neighborSize.size() % 5000 == 0) {
+			Debugging::out() << "remain size : "<< neighborSize.size() << endl;
+		}
         out.push_back(cur);
 
         //collect the neighbors of eliminated vertex

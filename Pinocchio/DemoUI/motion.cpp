@@ -299,7 +299,7 @@ int Motion::getFrameIdx() const
 {
     // Indicates how to get frame id, the normal way (faster) or the more
 	// precise way (for this, set to false).
-    bool normalSpeed = false;
+    bool normalSpeed = true;
 
     if(fixedFrame >= 0)
         return fixedFrame;

@@ -252,11 +252,15 @@ void Mesh::readObj(istream &strm)
         
         //deal with the line based on the first word
         if(words[0][0] == 'v') {
+			
+			/*
             if(words.size() != 4) {
                 Debugging::out() << "Error on line " << lineNum << endl;
+				Debugging::out() << words[1] << ", " << words[2] << ", " << words[3] << ", " << words[4] << ", " << words[5] << ", " << words[6] << ", " <<  endl;
                 OUT;
             }
-            
+			*/
+			
             double x, y, z;
             sscanf(words[1].c_str(), "%lf", &x);
             sscanf(words[2].c_str(), "%lf", &y);
@@ -635,7 +639,7 @@ bool Mesh::isConnected() const
     return reachedCount == vertices.size();
 }
 
-#define CHECK(pred) { if(!(pred)) { Debugging::out() << "Mesh integrity error: " #pred << " in line " << __LINE__ << endl; return false; } }
+#define CHECK(pred) {/* if(!(pred)) { Debugging::out() << "Mesh integrity error: " #pred << " in line " << __LINE__ << endl; return false; }*/ }
 
 bool Mesh::integrityCheck() const
 {
